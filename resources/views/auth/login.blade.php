@@ -66,7 +66,7 @@
 
   <body>
     <!-- Content -->
-
+    @include('sweetalert::alert')
     <div class="container-xxl">
       <div class="authentication-wrapper authentication-basic container-p-y">
         <div class="authentication-inner">
@@ -131,11 +131,11 @@
                       </g>
                     </svg>
                   </span>
-                  <span class="app-brand-text demo text-body fw-bolder">Square</span>
+                  <span class="app-brand-text demo text-body fw-bolder">BankSampah</span>
                 </a>
               </div>
               <!-- /Logo -->
-              <h4 class="mb-2">Welcome to Square! 👋</h4>
+              <h4 class="mb-2">Welcome to Bank Sampah! 👋</h4>
               <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
               <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -152,9 +152,7 @@
                 <div class="mb-3 form-password-toggle">
                     <div class="d-flex justify-content-between">
                         <x-input-label for="password" class="form-label" :value="__('Password')" />
-                        <a href="{{ route('password.request') }}">
-                            <small>Forgot Password?</small>
-                        </a>
+                       
                     </div>
                     <div class="input-group input-group-merge">
                         <x-text-input id="password" class="form-control"
@@ -183,7 +181,7 @@
 
               <p class="text-center">
                 <span>New on our platform?</span>
-                <a href="auth-register-basic.html">
+                <a href="/register">
                   <span>Create an account</span>
                 </a>
               </p>

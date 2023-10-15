@@ -30,7 +30,7 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Position</th>
+
                                     <th>Status</th>
                                     <th>Last Seen</th>
                                     <th>Actions</th>
@@ -45,8 +45,7 @@
                                                     <div class="avatar avatar-xs pull-up" data-bs-toggle="tooltip"
                                                         data-popup="tooltip-custom" data-bs-placement="top"
                                                         title="{{ $user->name }}">
-                                                        <img src="/assets/img/avatars/5.png" alt="Avatar"
-                                                            class="rounded-circle" />
+                                                        
                                                         <strong
                                                             class="text-sm td-name">{{ Str::limit($user->name, 12) }}</strong>
                                                     </div>
@@ -55,9 +54,7 @@
 
                                         </td>
                                         <td>{{ $user->email }}</td>
-                                        <td>
-                                            {{ $user->position }}
-                                        </td>
+
                                         <td>
                                             @if (Cache::has('user-is-online-' . $user->id))
                                                 <span class="badge bg-label-success me-1">Online</span>

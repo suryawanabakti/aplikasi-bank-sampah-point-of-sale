@@ -19,28 +19,29 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $user = \App\Models\User::create([
-            // 'id' => Str::uuid(),
-            'name' => 'Surya Wana Bakti',
-            'email' => 'surya@square',
-            'password' => bcrypt('qwerty123'),
-            'last_seen' => Carbon::now(),
-            'position' => 'super admin'
-        ]);
-
-        $usera = \App\Models\User::factory(5)->create();
-
 
 
         $roleSuper = Role::create(['name' => 'super-admin']);
-        $roleAdmin = Role::create(['name' => 'admin']);
+        $roleNasabah = Role::create(['name' => 'nasabah']);
+        $roleKabag = Role::create(['name' => 'kabag']);
 
-        $user->assignRole($roleSuper);
 
+        $user = \App\Models\User::create([
+            'name' => 'Endang',
+            'email' => 'endang@super',
+            'alamat' => 'Super',
+            'no_telepon' => '085156182381',
+            'password' => bcrypt('qwerty123'),
+        ]);
 
-        $permission = Permission::create(['name' => 'full-users']);
-
-        $roleSuper->givePermissionTo($permission);
-        // $roleAdmin->givePermissionTo($permission);
+        $kabag = \App\Models\User::create([
+            'name' => 'endang',
+            'email' => 'endang@kabag',
+            'alamat' => 'Super',
+            'no_telepon' => '085156182381',
+            'password' => bcrypt('qwerty123'),
+        ]);
+        $user->assignRole("super-admin");
+        $kabag->assignRole("kabag");
     }
 }

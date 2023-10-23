@@ -15,6 +15,8 @@
                             <table class="table table-hover" id="myTable">
                                 <thead>
                                     <tr>
+                                        <th>No.</th>
+                                        <th>Tanggal</th>
                                         <th>Jenis</th>
                                         <th>Deskripsi</th>
                                         <th>Berat</th>
@@ -24,6 +26,8 @@
                                 <tbody class="table-border-bottom-0">
                                     @foreach ($sampah as $data)
                                         <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $data->created_at->format('d M Y') }}</td>
                                             <td>{{ $data->jenis_sampah }}</td>
                                             <td>{{ $data->deskripsi }}</td>
                                             <td>{{ $data->berat }}</td>

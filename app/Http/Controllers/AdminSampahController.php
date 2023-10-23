@@ -34,9 +34,12 @@ class AdminSampahController extends Controller
                 'countryCode' => '62', //optional
             ),
             CURLOPT_HTTPHEADER => array(
-                'Authorization: QepQKjnTC20tMki@kgJs' //change TOKEN to your actual token
+                'Authorization: 1Gq2WgBYp7up4__cY-KC' //change TOKEN to your actual token
             ),
+
         ));
+        // QepQKjnTC20tMki@kgJs1
+
 
         $response = curl_exec($curl);
 
@@ -52,6 +55,8 @@ class AdminSampahController extends Controller
         ]);
         $user = User::find($sampah->user_id);
         $this->sendWa($user->no_telepon, "Sampah Anda Akan Di Jemput");
+        $valData['harga']  = $request->harga * $request->berat;
+        $valData['nama'] = $request->harga * $request->berat;
         $sampah->update($valData);
         Alert::success("Berhasil", "berhasil update sampah");
         return back();

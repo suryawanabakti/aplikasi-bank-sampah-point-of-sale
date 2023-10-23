@@ -152,12 +152,12 @@
                 <div class="mb-3 form-password-toggle">
                     <div class="d-flex justify-content-between">
                         <x-input-label for="password" class="form-label" :value="__('Password')" />
-                       
+                        <small><a href="/forgot-password" class="text-sm">Lupa Password?</a></small>
                     </div>
                     <div class="input-group input-group-merge">
                         <x-text-input id="password" class="form-control"
                         type="password"
-                        
+                      
                         name="password"
                         placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                         aria-describedby="password"

@@ -12,26 +12,35 @@
                             <table class="table table-hover" id="myTable">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
+                                        <th>No.</th>
+                                        <th>Nama</th>
                                         <th>Saldo</th>
                                         <th>Total Berat</th>
                                         <th>Jml.Sampah</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody class="table-border-bottom-0">
                                     @foreach ($users as $user)
                                         <tr>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td width="250px">
                                                 {{ $user->name }}
                                             </td>
                                             <td>
-                                                {{ $user->sampah->where('status', 'terima')->sum('harga') }}
+                                                {{ $user->sampah->where('status', 'terima')->sum('nama') }}
                                             </td>
                                             <td>
                                                 {{ $user->sampah->where('status', 'terima')->sum('berat') }}Kg.
                                             </td>
                                             <td>
                                                 {{ $user->sampah->where('status', 'terima')->count() }}
+                                            </td>
+                                            <td>
+                                                <a href="/admin/tabungan-sampah/{{ $user->id }}/ambil"
+                                                    onclick="return confirm('Apakah anda yaking mengambil saldo ?')"
+                                                    class="btn btn-primary">Ambil
+                                                    Saldo</a>
                                             </td>
                                         </tr>
                                     @endforeach

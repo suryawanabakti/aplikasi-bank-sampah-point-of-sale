@@ -14,9 +14,11 @@ class LaporanController extends Controller
     }
     public function cetak()
     {
-
         $sampah = Sampah::orderBy('created_at', 'desc')->where('status', 'terima')->whereNotNull('harga')->get();
-
         return view('laporan.cetak', compact('sampah'));
+    }
+    public function cetakPerUser(Sampah $sampah)
+    {
+        return view('laporan.cetak-peruser', compact('sampah'));
     }
 }

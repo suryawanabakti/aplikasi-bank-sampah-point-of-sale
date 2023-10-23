@@ -49,11 +49,13 @@ class AdminSampahMasukController extends Controller
         curl_close($curl);
     }
 
-    public function tolak(Sampah $sampah)
+    public function tolak(Sampah $sampah, Request $request)
     {
         $sampah->update([
             'status' => 'tolak'
         ]);
+
+        $this->sendWa($sampah->user->no_telepon, "Sampah Telah Ditolak Dengan Alasan : $request->alasan");
         Alert::success("Berhasil Menolak Sampah");
         return back();
     }

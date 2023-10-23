@@ -91,6 +91,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/admin/sampah/{sampah}', [AdminSampahController::class, 'update']);
 
     Route::get('/admin/tabungan-sampah', [AdminTabunganController::class, 'index']);
+    Route::get('/admin/tabungan-sampah/{user}/ambil', [AdminTabunganController::class, 'ambilSaldo']);
 
 
 
@@ -109,5 +110,6 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/laporan/sampah', [LaporanController::class, 'index']);
 Route::get('/laporan/sampah/cetak', [LaporanController::class, 'cetak']);
+Route::get('/laporan/sampah/cetak/{sampah}', [LaporanController::class, 'cetakPerUser']);
 
 require __DIR__ . '/auth.php';

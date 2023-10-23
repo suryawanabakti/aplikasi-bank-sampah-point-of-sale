@@ -6,7 +6,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <a href="/laporan/sampah/cetak" target="_blank" class="btn btn-warning mb-3">Cetak</a>
+                <a href="/laporan/sampah/cetak" target="_blank" class="btn btn-warning mb-3">Cetak Semua</a>
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive text-nowrap">
@@ -19,6 +19,7 @@
                                         <th>Deskripsi</th>
                                         <th>Berat</th>
                                         <th>Harga</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody class="table-border-bottom-0">
@@ -33,7 +34,10 @@
                                                 {{ $data->berat }}
                                             </td>
                                             <td>{{ number_format($data->harga) }}</td>
-
+                                            <td>
+                                                <a href="/laporan/sampah/cetak/{{ $data->id }}" target="_blank"
+                                                    class="btn btn-warning">cetak</a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

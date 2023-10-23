@@ -12,7 +12,8 @@
                             <table class="table table-hover" id="myTable">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
+                                        <th>No.</th>
+                                        <th>Nama</th>
                                         <th>Email</th>
                                         <th>Alamat</th>
                                         <th>No.Telepon</th>
@@ -21,6 +22,7 @@
                                 <tbody class="table-border-bottom-0">
                                     @foreach ($nasabah as $user)
                                         <tr>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td width="250px">
                                                 <b>{{ $user->name }}</b>
                                             </td>

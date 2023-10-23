@@ -11,6 +11,8 @@
                             <table class="table table-hover" id="myTable">
                                 <thead>
                                     <tr>
+                                        <th>No</th>
+                                        <th>Tanggal</th>
                                         <th>Nasabah</th>
                                         <th>Jenis Sampah</th>
                                         <th>Deskripsi</th>
@@ -22,11 +24,12 @@
                                 <tbody class="table-border-bottom-0">
                                     @foreach ($sampah as $data)
                                         <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $data->created_at->format('d M Y') }}</td>
                                             <td> <b>{{ $data->user->name }}</b> <br> {{ $data->user->alamat }} <br>
                                                 {{ $data->user->no_telepon }}</td>
                                             <td>{{ $data->jenis_sampah }}</td>
                                             <td>{{ $data->deskripsi }}</td>
-
                                             <td>
                                                 <a target="_blank"
                                                     href="/storage/gambar/{{ $data->gambar }}">{{ $data->gambar }}</a>
@@ -68,11 +71,28 @@
                                                                             name="berat">
                                                                     </div>
                                                                     <div class="mb-3">
-                                                                        <label for="" class="form-label">Harga
+
+                                                                        @php
+                                                                            if ($data->jenis_sampah == 'Botol') {
+                                                                                $hargaPerKilo = 3000;
+                                                                            }
+                                                                            if ($data->jenis_sampah == 'Gelas') {
+                                                                                $hargaPerKilo = 2000;
+                                                                            }
+                                                                            if ($data->jenis_sampah == 'Kardus') {
+                                                                                $hargaPerKilo = 4000;
+                                                                            }
+                                                                            if ($data->jenis_sampah == 'Kaleng/Besi') {
+                                                                                $hargaPerKilo = 5000;
+                                                                            }
+                                                                        @endphp
+                                                                        <label for="" class="form-label">Harga Per
+                                                                            Kilo
                                                                             (Rp.)
                                                                         </label>
                                                                         <input type="number" class="form-control"
-                                                                            name="harga">
+                                                                            name="harga" value="{{ $hargaPerKilo ?? 0 }}"
+                                                                            readonly>
                                                                     </div>
 
                                                                 </div>

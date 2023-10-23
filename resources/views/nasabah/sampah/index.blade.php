@@ -28,9 +28,8 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">Jenis Sampah</label>
                                         <select name="jenis_sampah" id="jenis_sampah" class="form-control">
-                                            <option value="Botol">Botol</option>
-                                            <option value="Gelas">Gelas</option>
-                                            <option value="Minuman">Minuman</option>
+                                            <option value="Botol">Botol Plastik</option>
+                                            <option value="Gelas">Gelas Minuman</option>
                                             <option value="Kardus">Kardus</option>
                                             <option value="Kaleng/Besi">Kaleng/Besi</option>
                                         </select>
@@ -62,6 +61,8 @@
                             <table class="table table-hover" id="myTable">
                                 <thead>
                                     <tr>
+                                        <th>No.</th>
+                                        <th>Tanggal</th>
                                         <th>Jenis Sampah</th>
                                         <th>Deskripsi</th>
                                         <th>Gambar</th>
@@ -72,6 +73,8 @@
                                 <tbody class="table-border-bottom-0">
                                     @foreach ($sampah as $data)
                                         <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $data->created_at->format('d M Y') }}</td>
                                             <td>{{ $data->jenis_sampah }}</td>
                                             <td>{{ $data->deskripsi }}</td>
                                             <td><a target="_blank"

@@ -28,7 +28,8 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
+                                    <th>No.</th>
+                                    <th>Nama</th>
                                     <th>Email</th>
 
                                     <th>Status</th>
@@ -39,13 +40,14 @@
                             <tbody class="table-border-bottom-0">
                                 @foreach ($users as $user)
                                     <tr>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td width="250px">
                                             <div class="users-list">
                                                 <a href="{{ route('admin.users.show', $user->id) }}" class="text-dark">
                                                     <div class="avatar avatar-xs pull-up" data-bs-toggle="tooltip"
                                                         data-popup="tooltip-custom" data-bs-placement="top"
                                                         title="{{ $user->name }}">
-                                                        
+
                                                         <strong
                                                             class="text-sm td-name">{{ Str::limit($user->name, 12) }}</strong>
                                                     </div>

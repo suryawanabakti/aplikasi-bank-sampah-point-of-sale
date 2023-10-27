@@ -9,7 +9,7 @@ class NasabahSaldoController extends Controller
 {
     public function index()
     {
-        $sampah = Sampah::orderBy('created_at', 'desc')->where('status', 'terima')->where('user_id', auth()->id())->get();
+        $sampah = Sampah::having('nama', '>', 0)->orderBy('created_at', 'desc')->where('status', 'terima')->where('user_id', auth()->id())->get();
 
 
         return view('nasabah.saldo.index', compact('sampah'));

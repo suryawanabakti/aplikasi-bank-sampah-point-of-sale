@@ -29,7 +29,7 @@
                         </div>
                         <span>Total Saldo</span>
                         <h3 class="card-title text-nowrap mb-1">
-                            {{ $totalSaldo }}
+                            {{ number_format(auth()->user()->saldo) }}
                         </h3>
                     </div>
                 </div>

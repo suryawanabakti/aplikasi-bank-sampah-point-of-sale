@@ -19,7 +19,7 @@
                                         <th>Jenis Sampah</th>
                                         <th>Deskripsi</th>
                                         <th>Gambar</th>
-                                        <th>Transaksi</th>
+
                                         <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -38,13 +38,7 @@
                                                 <a target="_blank"
                                                     href="/storage/gambar/{{ $data->gambar }}">{{ $data->gambar }}</a>
                                             </td>
-                                            <td>
-                                                @if ($data->nama)
-                                                    {{ $data->nama }} <br> {{ $data->berat }} Kg.
-                                                    <br>Rp.{{ number_format($data->harga) }}
-                                                @endif
 
-                                            </td>
                                             <td>
                                                 @if ($data->status == 'proses')
                                                     <span class="badge bg-warning">{{ $data->status }}</span>

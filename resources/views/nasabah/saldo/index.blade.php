@@ -6,7 +6,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <b>Total Saldo : {{ $sampah->sum('harga') }}</b>
+                <b>Total Saldo : {{ number_format(auth()->user()->saldo) }}</b>
             </div>
             <div class="col-md-12">
                 <div class="card">

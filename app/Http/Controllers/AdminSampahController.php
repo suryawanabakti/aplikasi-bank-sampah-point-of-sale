@@ -58,6 +58,8 @@ class AdminSampahController extends Controller
         $valData['harga']  = $request->harga * $request->berat;
         $valData['nama'] = $request->harga * $request->berat;
         $sampah->update($valData);
+
+        $user = User::where('id', $sampah->user_id)->increment('saldo', $valData['harga']);
         Alert::success("Berhasil", "berhasil update sampah");
         return back();
     }

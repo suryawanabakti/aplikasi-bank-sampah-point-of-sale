@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('alamat');
             $table->string('no_telepon');
             $table->timestamp('last_seen')->default(Carbon::now());
+            $table->bigInteger('saldo')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

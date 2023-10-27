@@ -18,13 +18,49 @@ class AdminTabunganController extends Controller
         return view('admin.tabungan-sampah.index', compact('users'));
     }
 
-    public function ambilSaldo(User $user)
+    public function ambilSaldo(User $user, Request $request)
     {
-        Sampah::where('status', 'terima')->where('user_id', $user->id)->update([
-            'nama' => 0,
-        ]);
+        if ($request->jumlah_saldo > $user->saldo) {
+            Alert::error("Saldo Tidak Cukup");
+            return back();
+        }
+
+        $user->decrement('saldo', $request->jumlah_saldo);
+        $gaga = User::find($user->id);
+        $this->sendWa($user->no_telepon, "Telah mengambil saldo sebesar $request->jumlah_saldo. Sisa saldo $gaga->saldo");
 
         Alert::success("Berhasil ambil saldo");
         return back();
+    }
+
+    public function sendWa($noWa, $message)
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://api.fonnte.com/send',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => array(
+                'target' => $noWa,
+                'message' => $message,
+                'countryCode' => '62', //optional
+            ),
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: 1Gq2WgBYp7up4__cY-KC' //change TOKEN to your actual token
+            ),
+
+        ));
+        // QepQKjnTC20tMki@kgJs1
+
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
     }
 }
